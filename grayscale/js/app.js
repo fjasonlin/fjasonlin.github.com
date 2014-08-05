@@ -1,97 +1,49 @@
 /**
-
 * SETUP
-
 **/
-
 var app = app || {};
 
 
-
-
-
 /**
-
 * MODELS
-
 **/
-
 app.PostItem = Backbone.Model.extend({
-
     url: function() {
-
         return 'http://booklog.io/1/post';
-
     },
-
     defaults: {
-
         "success": true,
-
         "errors": [],
-
         "errfor": {},
-
         "posts": [
-
             {
-
                 "_id": {
-
                     "subject": "Hi There"
-
                 },
-
                 "subject": "Hi There",
-
                 "date": "2014-08-04T08:29:51.699Z",
-
                 "id": "53df447f5c9eb7ba5e00014a"
-
             },
-
             {
-
                 "_id": {
-
                     "subject": "學習重點"
-
                 },
-
                 "subject": "學習重點",
-
                 "date": "2014-07-27T08:27:14.832Z",
-
                 "id": "53d4b7e28ceee0942f000957"
-
             }
-
         ]
-
     }
-
 });
 
-
-
 app.Post = Backbone.Model.extend({
-
     url: function() {
-
         return 'http://booklog.io/1/post/' + this.get('id');
-
     },
-
     // no good
-
     id: '',
-
     defaults: {
-
-        "success": true,
-
         "errors": [],
-
         "errfor": {},
 
         "post": {
