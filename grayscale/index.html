@@ -141,6 +141,28 @@
     <!-- Map Section -->
     <div id="map"></div>
 
+    <!-- Underscore Template Section -->
+    <script type='text/template' id='tmpl-postitem'>
+        <% _.each(posts, function(post) {  %>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <a class="btn btn-primary btn-lg"><%= post.subject %></a>
+            </div>
+        </div>    
+        <% }); %>
+    </script>
+
+    <script type='text/template' id='tmpl-post'>    
+        <div class="post-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2><%= post.subject %></h2>
+                    <p><%= post.content %></a>
+                </div>
+            </div>
+        </div>
+    </script>
+
     <!-- Footer -->
     <footer>
         <div class="container text-center">
