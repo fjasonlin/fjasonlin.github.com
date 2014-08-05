@@ -219,25 +219,15 @@ app.PostView = Backbone.View.extend({
     },
 
     render: function() {
-
  		var htmlCodes = this.template(this.model.attributes);
-
         this.$el.html(htmlCodes);
-
     }
-
 });
 
 
-
-
-
 $(document).ready(function(){
-
     app.postItemView = new app.PostItemView();
-
     app.postView = new app.PostView();
-
 });
 
 
