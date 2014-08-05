@@ -43,6 +43,7 @@ app.Post = Backbone.Model.extend({
     // no good
     id: '',
     defaults: {
+        "success": true,
         "errors": [],
         "errfor": {},
         "post": {
@@ -75,31 +76,33 @@ app.PostCollection = Backbone.Collection.extend({
 **/
 app.PostItemView = Backbone.View.extend({
     el: '#postitems',
+    events: {
+        'click #btn-message-save':  'save'
+    },
     initialize: function() {
         var self = this;
-
+        
 		this.model = new app.PostItem();
         this.collection = new app.PostCollection();
-
+        
         this.template = _.template($('#tmpl-postitem').html());
         this.model.bind('change', this.render, this);
-
+        
         this.model.fetch({
             success: function(model, response, options) {	
-                self.prefetch(); 
+                self.prefetch();                
                 $('#status-loading').addClass('hide');
             }
         }); 
     },
-
     prefetch: function() {
         var self = this;
         
-		$('[data-tag="postitem"]').each(function() {
-            var me = $(this),
+        $('[data-tag="postitem"]').each(function() {
+            var me = $(this), 
                 id = me.data('post-id'),
-                post = new app.Post({ id: id});
-            //post('id', id);
+                post = new app.Post({id: id});
+            
             post.fetch();
             self.collection.push(post);
             console.log(JSON.stringify(post.attributes));
