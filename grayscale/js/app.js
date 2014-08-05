@@ -81,10 +81,13 @@ app.PostItemView = Backbone.View.extend({
     },
     syncUp: function(event) {
         var me = $(event.target),
-            id = me.data('post-id');
+            id = me.data('post-id'),
+            post = this.collection.get({id: id});  // query criteria; post, model object
         
         console.log('ID: ' + id);
         event.preventDefault();
+        
+        app.postView.model.set(post.attributes);   // put data into view
     },
     initialize: function() {
         var self = this;
