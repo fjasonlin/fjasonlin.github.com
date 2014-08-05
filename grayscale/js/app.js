@@ -77,7 +77,13 @@ app.PostCollection = Backbone.Collection.extend({
 app.PostItemView = Backbone.View.extend({
     el: '#postitems',
     events: {
-        'click #btn-message-save':  'save'
+        'click [data-tag="postitem"]':  'syncUp'
+    },
+    syncUp: function(event) {
+        var me = $(event.target),
+            id = me.data('post-id');
+        
+        console.log('ID: ' + id);
     },
     initialize: function() {
         var self = this;
