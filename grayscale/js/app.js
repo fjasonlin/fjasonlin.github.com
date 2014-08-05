@@ -84,6 +84,7 @@ app.PostItemView = Backbone.View.extend({
             id = me.data('post-id');
         
         console.log('ID: ' + id);
+        event.preventDefault();
     },
     initialize: function() {
         var self = this;
@@ -111,7 +112,7 @@ app.PostItemView = Backbone.View.extend({
             
             post.fetch();
             self.collection.push(post);
-            console.log(JSON.stringify(post.attributes));
+            //console.log(JSON.stringify(post.attributes));
         });
     },
     render: function() {
