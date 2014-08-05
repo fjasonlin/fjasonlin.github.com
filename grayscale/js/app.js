@@ -139,6 +139,8 @@ app.PostItemView = Backbone.View.extend({
     },
 
     prefetch: function() {
+        var self = this;
+        
 		$('[data-tag="postitem"]').each(function() {
             var me = $(this),
                 id = me.data('post-id'),
@@ -147,7 +149,7 @@ app.PostItemView = Backbone.View.extend({
             //post('id', id);
             post.fetch();
             
-            this.collection.push(post);
+            self.collection.push(post);
             
             console.log(JSON.stringify(post.attributes));
         });
